@@ -19,8 +19,8 @@ class BookShelfChanger extends Component {
             <div className="book-shelf-changer">
                 <select value={selectedshelf} onChange={this.handleChange}>
                     <option value="move" disabled>Move to...</option>
-                    {Object.keys(shelvesmapping).map((shelf) => (
-                        <option value={shelf}>{shelvesmapping[shelf]}</option>
+                    {Object.keys(shelvesmapping).map((shelf, index) => (
+                        <option key={index} value={shelf}>{shelvesmapping[shelf]}</option>
                         )
                     )}
                 </select>

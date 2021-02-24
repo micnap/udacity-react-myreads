@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import BookShelfChanger from "./BookShelfChanger";
 
-
 class Book extends Component {
 
     constructor(props) {
@@ -14,31 +13,36 @@ class Book extends Component {
     }
 
     render() {
-        const { book, shelvesmapping } = this.props
-        const backgroundImage = book.imageLinks.thumbnail ? book.imageLinks.thumbnail : 'https://via.placeholder.com/128x193.png'
+        const {book, shelvesmapping} = this.props
+        const backgroundImage = () => {
+            try {
+                return book.imageLinks.thumbnail
+            } catch (e) {
+                console.log(book.title + " is missing a thumbnail")
+                return '/icons/128x193.png'
+            }
+        }
 
         return (
-
             <li>
-                {console.log('book', 'grr')}
                 <div className="book">
                     <div className="book-top">
-
                         <div className="book-cover" style={{
                             width: 128,
                             height: 193,
-                            backgroundImage: `url(${backgroundImage})`
+                            backgroundImage: `url(${backgroundImage()})`
                         }}></div>
-                        <BookShelfChanger selectedshelf={book.shelf} shelvesmapping={shelvesmapping} handleChange={this.handleChange} />
+                        <BookShelfChanger selectedshelf={book.shelf} shelvesmapping={shelvesmapping}
+                                          handleChange={this.handleChange}/>
                     </div>
                     <div className="book-title">{book.title}</div>
                     <div className="book-authors">{
+
                         // Splits list of authors onto their own lines.
-                        book.authors.map(item => <div>{item}</div>)
+                        book.authors !== undefined && book.authors.map((item, index) => <div key={index}>{item}</div>)
                     }</div>
                 </div>
             </li>
-
         )
     }
 }
