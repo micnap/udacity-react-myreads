@@ -1,8 +1,8 @@
 # MyReads Project
 
-This is a final assessment project for Udacity's React Fundamentals course. 
+This is a final assessment project for Udacity's React Fundamentals course. The main objectives of this part of the course were to learn some basics of React like components, props, state, data flow and updating, and lifecycle events.
 
-# Project Setup
+## Project Setup
 To get the project up and running:
 
 * install all project dependencies with `npm install`
