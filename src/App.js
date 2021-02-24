@@ -62,7 +62,6 @@ class BooksApp extends React.Component {
         }
         BooksAPI.search(e.target.value)
             .then(results => {
-                console.log('results', results)
                 if (!results || results.error) {
                     this.showBooks(false)
                     throw new Error(results.error)
