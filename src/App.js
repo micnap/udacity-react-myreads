@@ -17,6 +17,7 @@ class BooksApp extends React.Component {
         this.changeBookShelf = this.changeBookShelf.bind(this);
         this.onSearch = this.onSearch.bind(this);
         this.refresh = this.refresh.bind(this);
+        this.showBooks = this.showBooks.bind(this);
     }
 
     async componentDidMount() {
@@ -147,7 +148,7 @@ class BooksApp extends React.Component {
                         </div>
 
                         <div className="open-search">
-                            <Link to={{pathname: '/search'}}>Search</Link>
+                            <Link to={{pathname: '/search'}} onClick={() => this.showBooks(false)}>Search</Link>
                         </div>
                     </div>
                 )}/>
